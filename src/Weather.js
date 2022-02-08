@@ -19,7 +19,7 @@ return <div className="Weather">
 </ul>
 <div className="row">
     <div className="col-6">
-    <img src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png" alt="cloudy-image" />
+    <img src="https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png" alt="cloudy-icon" />
     8°C
     </div>
     <div className="col-6">
