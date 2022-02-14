@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 
@@ -12,7 +11,7 @@ ready: true,
 temperature: response.data.main.temp,
 city: response.data.name,
 date: new Date(response.data.dt*1000),
-iconUrl: "https://ssl.gstatic.com/onebox/weather/48/partly_cloudy.png",
+icon: response.data.weather[0].icon,
 description: response.data.weather[0].description,
 wind: response.data.wind.speed,
 humidity: response.data.main.humidity
