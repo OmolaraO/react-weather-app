@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+
+import WeatherInfo from "./WeatherInfo";
 import axios from "axios";
 
 export default function Weather(props) {
+const [city, setCity] = useState(props.defaultCity);
  const [weatherData, setWeatherData]  = useState({ready: false });   
 function handleResponse(response) {     
 setWeatherData({
@@ -17,13 +20,29 @@ humidity: response.data.main.humidity
 
 }
 
+function search() {
+let apiKey = "baf56f4471be4826660e97693ea45c45";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+axios.get(apiUrl).then(handleResponse);
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    search();
+}
+
+function updateCity(event) {
+ setCity(event.target.value)
+}
+
 if(weatherData.ready) {
 return <div className="Weather">
-    <form>
+    <form onSubmit = {handleSubmit}>
         <div className="row">
         <div className="col-6">
         <input type="search" placeholder="type a city"
         autoFocus="on"
+        onChange = {updateCity}
         />
          </div>
         <div className="col-6">
@@ -31,36 +50,11 @@ return <div className="Weather">
         </div>
         </div>
     </form>
-<h1>{weatherData.city}</h1>
-<ul>
-<li> <formattedDate date={weatherData.date} />
-</li>
-<li className="text-capitalize">{weatherData.description}</li>
-</ul>
-<div className="row">
-<div className="col-6">
-<div className="clearfix">
-<img src= {weatherData.iconUrl} alt= {weatherData.description}
-className="float-left"
-/>
-<div className="float-left">
- <span className="temperature">{Math.round(weatherData.temperature)}</span> 
- <span className="unit">°C</span> 
- </div>
- </div>
-    </div>
-    <div className="col-6">
-     <ul>
-         <li>Wind: {weatherData.wind}km/h</li>
-         <li>Humidity: {weatherData.humidity} %</li>
-         </ul>
-         </div>   
-    </div>
+    <WeatherInfo data={weatherData} />
+
    </div>
 } else {
- let apiKey = "baf56f4471be4826660e97693ea45c45";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
-axios.get(apiUrl).then(handleResponse);
+ search();
 return "The App is Loading..."
 }
 
