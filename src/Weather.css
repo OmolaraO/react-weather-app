@@ -1,8 +1,8 @@
 .Weather {
-font-family: arial, sans-serif;   
+font-family: poppins;   
 border: 1px solid #dadd;
 border-radius: 5px;
-color: rgb(135, 135, 135);
+color: #ff0000;
 margin: 30px auto;
 padding: 16px;
 max-width:500px;
