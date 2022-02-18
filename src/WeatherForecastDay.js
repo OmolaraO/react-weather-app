@@ -23,8 +23,8 @@ return days[day]
             <div className="forecast-day">{day()}</div>
     <WeatherIcon code={props.data.weather[0].icon}  size={30}/>
 <div className="forecast-temperatures">
-    <span className="forecast-temperature-max">{maxTemperature()}°</span>  
-  <span className="forecast-temperature-min">{minTemperature()}°</span>
+    <span className="forecast-temperature-max">{maxTemperature()}</span>  
+  <span className="forecast-temperature-min">{minTemperature()}</span>
      </div>
      </div>
     );

@@ -8,9 +8,9 @@ return(
  <div>
     <h1>{props.data.city}</h1>
 <ul>
-<li> <formattedDate date={props.data.date} />
+<li> <FormattedDate date={props.data.date} />
 </li>
-  <FormattedDate date= {new Date()} /> 
+
 <li className="text-capitalize">{props.data.description}</li>
 </ul>
 <div className="row">
